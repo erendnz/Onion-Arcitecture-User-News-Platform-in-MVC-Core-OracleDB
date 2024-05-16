@@ -1,0 +1,39 @@
+﻿@using Haber.UI.Areas.AdminPanel.Models;
+@model HaberEkleVM
+
+
+<form asp-action="HaberEkle" enctype="multipart/form-data">
+    <table class="table">
+        <tr>
+            <td><label asp-for="Baslik" class="form-label"></label></td>
+            <td><input asp-for="Baslik" class="form-control" /></td>
+        </tr>
+        <tr>
+            <td><label asp-for="Detay" class="form-label"></label></td>
+            <td><textarea asp-for="Detay" class="text" cols="60" rows="6"></textarea></td>
+        </tr>
+
+        <tr>
+            <td><label asp-for="Kategoriler" class="form-label"></label></td>
+            <td><select asp-for="KategoriID" class="form-control" asp-items="Model.Kategoriler"></select></td>
+        </tr>
+
+        <tr>
+            <td><label asp-for="ResimDosyasi" class="form-label"></label></td>
+            <td><input asp-for="ResimDosyasi" type="file" class="form-control" /></td>
+        </tr>
+
+       
+        
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Haber Ekle" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div asp-validation-summary="All"></div>
+            </td>
+        </tr>
+    </table>
+</form>

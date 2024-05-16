@@ -1,0 +1,12 @@
+﻿
+
+@using Haber.Application.Models.DTOs;
+@model YorumEkleDTO
+<div>
+    <form asp-area="UyePanel" asp-controller="Home" asp-action="YorumEkle" method="post">
+        <textarea cols="60" rows="6" asp-for="Mesaj"></textarea>
+        <input type="hidden" name="HaberID" value="@Model.HaberID" />
+        <input type="submit" value="Yorum Ekle" />
+    </form>
+    
+</div>

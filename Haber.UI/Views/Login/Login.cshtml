@@ -1,0 +1,20 @@
+﻿@using Haber.Application.Models.DTOs;
+@model LoginDTO
+
+<form asp-action="Login">
+    <table>
+        <tr>
+            <td><label asp-for="UserName"></label></td>
+            <td><input asp-for="UserName" /></td>
+        </tr>
+        <tr>
+            <td><label asp-for="Password"></label></td>
+            <td><input asp-for="Password" /></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Login" />
+            </td>
+        </tr>
+    </table>
+</form>

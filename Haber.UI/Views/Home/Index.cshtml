@@ -1,0 +1,14 @@
+﻿@using Haber.Application.Models.VMs;
+@model IEnumerable<HaberVM>
+
+<table class="table table-striped">
+    @foreach(var haber in Model)
+    {
+    <tr>
+        <td><img src="~/HaberResimleri/@haber.ResimYolu" width="120" height="80" /></td>
+        <td>@haber.Baslik</td>
+        <td>@haber.EklemeTarih</td>
+        <td><a asp-action="HaberDetay" asp-route-id="@haber.HaberID">Detay</a></td>
+    </tr>
+    }
+</table>

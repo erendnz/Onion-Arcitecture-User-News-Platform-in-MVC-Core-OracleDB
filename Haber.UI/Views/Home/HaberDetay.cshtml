@@ -1,0 +1,57 @@
+﻿
+@using Haber.Application.Models.DTOs;
+@using Haber.Application.Models.VMs;
+@model HaberDetayVM
+
+<table>
+    <tr>
+        <td></td>
+        <td><h2>@Model.Baslik</h2></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><img src="~/HaberResimleri/@Model.ResimYolu" width="300" height="240" /></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>@Model.Detay</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>@Model.KategoriAdi</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>@Model.EklemeTarih</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>@Model.GoruntulenmeSayisi</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+            <!--Yorumlar-->
+            <table>
+                @foreach(var yorum in Model.Yorumlar)
+                {
+                    <tr>
+                        <td>@yorum.UserName</td>
+                        <td>@yorum.Mesaj</td>
+                        <td>@yorum.EklemeTarih</td>
+                       
+                    </tr>
+
+                }
+               
+            </table>
+        </td>
+    </tr>
+</table>
+@if (Model.IsSignedUser)
+{
+    //Console.WriteLine(">>>>>"+Model.HaberID);
+    YorumEkleDTO yorum = new YorumEkleDTO();
+    yorum.HaberID = Model.HaberID;
+    @Html.Partial("_YorumEklePartial",yorum)
+}

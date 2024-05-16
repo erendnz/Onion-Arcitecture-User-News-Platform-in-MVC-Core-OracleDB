@@ -1,0 +1,85 @@
+﻿Proje: Onion Katmanlı Mimari ile Haber Sitesi olustuma
+
+Konu Detayı
+ *** Haber Girisi olacak(Admin)
+ *** Uyeler haberlere yorum yapabilecek
+ *** Uyeler istedikleri haberleri takip listesine atabilecek...
+ *** KayıtEkleme,Silme ve Guncelleme tarihleri
+
+Kullanılacak Teknolojiler
+*** Onion n-Layer
+*** MVC Core 6(UI)
+*** Generic Repository Pattern
+*** AutoMapper
+*** DTO, VM, 
+*** Func<> => Expression<Func<>> ????
+*** User islemleri(Admin,Uye)
+*** Identity(Onyuz MVC de gerekli sınıflar kullanılarak yazılacak)
+*** Area kullanımı(AdminPanel,UyePanel)
+*** Entity Framework Core 6
+*** Veriler veritabanından kalıcı olarak silinmeyecek(Aktif,Pasif,Guncellendi)
+
+Islem Sirasi
+1-Domain Layer
+    Entities: Veritabındaki tablolara karşılık gelen sınıflar
+    Enums: 
+    Repository(Abstract=>Interface)
+
+2-Infrastructure Layer
+  IdentityDbContext sınıfından turetilen sınıf(HaberContext)
+  EntityConfiguration: IEntityTypeConfigurations
+  Repository:(Concrete)
+
+3-Application Layer
+  Services(Repository leri kullanarak (DIP) gerekli altyapıyı olusturacagiz...)
+  Models:DTO, VM
+  AutoMapper: Mapping tanımlamaları ve eslestirmeler
+  
+4-UI
+  Onyuzde gerekli olan ekran tasarımları
+  Login, Register icin Identity kullanrak ekranların olusturulması...
+  Gerekli olan VM lerin olusturulmasi...
+
+
+
+  AutoMapper Kullanımı
+  1- Gerekli kutuphaneyi yukle => Nuget
+  2- Application katmanında
+     Klasor olustur...
+     Bir sınıf olustur Profile sınıfından turet...
+     ctor icerisinde CreateMap() kullan...
+  
+  3-program.cs içerisinde ayarları yap..
+  4-Istenilen Serviste 
+     IMapper Mapper ile DIP  ile kullan
+  5- Map() metodu ile sınıfları eslestir...
+
+
+
+
+
+  Hatalar
+   Unable to create an object of type 'HaberContext'. For the different patterns supported at design time, see https://go.microsoft.com/fwlink/?linkid=851728
+   =>Default ctor() !!!
+
+
+   The entity type 'IdentityUserLogin<int>' requires a primary key to be defined. If you intended to use a keyless entity type, call 'HasNoKey' in 'OnModelCreating'. For more information on keyless entity types, see https://go.microsoft.com/fwlink/?linkid=2141943.
+
+   => OnModelCreating()
+        base.OnModelCreating(builder);
+
+
+        haberleri goster(admin, normaluye icin)
+        her haber gosterildiginde(user) => goruntulenmeSayisi++
+        (Anonymous kullanıcılar için...)
+        yorum Ekle... Uye olanlar ekleyebilmeli...
+        Silme ile alakalı herhangi bir ornek...
+
+ 
+
+
+
+
+
+
+  
